@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body:    "Inter", system-ui, sans-serif;
+    --font-mono:    "JetBrains Mono", "SF Mono", monospace;
+    --font-han:     "Noto Serif SC", "Songti SC", serif;
+    --font-kr:      "Noto Sans KR", sans-serif;
+    --sz-cyan:   #00b8e6;
+    --sz-orange: #ff7a1a;
+    --sl-blue:   #3d6cea;
+    --sl-silver: #dde2f0;
+  }
+  html, body {
+    background: #03050b;
+    color: #bdc4d8;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body { font-family: var(--font-body), "Noto Sans SC", "Noto Sans KR", sans-serif; overflow-x: hidden; }
+  html[lang="zh-CN"] body { font-family: "Noto Sans SC", var(--font-body), sans-serif; }
+  html[lang="zh-CN"] .font-display { font-family: var(--font-han), serif; letter-spacing: 0; }
+
+  ::selection { background: rgba(0, 184, 230, 0.4); color: #fff; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  .num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+}
+
+@layer utilities {
+  .text-sz       { color: var(--sz-cyan); }
+  .text-sz-warm  { color: var(--sz-orange); }
+  .text-sz-glow  { color: #b6ecff; text-shadow: 0 0 18px rgba(0,184,230,0.55); }
+  .text-sz-warm-glow { color: #ffb78a; text-shadow: 0 0 18px rgba(255,122,26,0.55); }
+
+  .text-sl       { color: var(--sl-blue); }
+  .text-sl-glow  { color: #b8caff; text-shadow: 0 0 18px rgba(61,108,234,0.55); }
+  .text-sl-silver { color: var(--sl-silver); }
+
+  .glass {
+    background: linear-gradient(180deg, rgba(12,17,30,0.72) 0%, rgba(3,5,11,0.72) 100%);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid rgba(31, 41, 69, 0.85);
+  }
+  .glass-sz { border-color: rgba(0,184,230,0.32); }
+  .glass-sl { border-color: rgba(61,108,234,0.32); }
+  .panel-sz {
+    background: linear-gradient(180deg, rgba(0,42,60,0.45) 0%, rgba(3,5,11,0.85) 100%);
+    border: 1px solid rgba(0,184,230,0.3);
+  }
+  .panel-sl {
+    background: linear-gradient(180deg, rgba(8,22,60,0.45) 0%, rgba(3,5,11,0.85) 100%);
+    border: 1px solid rgba(61,108,234,0.3);
+  }
+
+  .grid-bg-sz {
+    background-image:
+      linear-gradient(rgba(0,184,230,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,122,26,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .grid-bg-sl {
+    background-image:
+      linear-gradient(rgba(61,108,234,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(221,226,240,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .scanline {
+    background: repeating-linear-gradient(
+      to bottom, transparent 0px, transparent 2px,
+      rgba(125,140,180,0.012) 3px, transparent 4px
+    );
+  }
+  .hairline-h {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(189,196,216,0.4), transparent);
+  }
+  .vertical-rule {
+    background: linear-gradient(180deg, transparent, rgba(189,196,216,0.5), transparent);
+    width: 1px;
+  }
+  .corner-sz::before, .corner-sz::after { content: ""; position: absolute; width: 12px; height: 12px; }
+  .corner-sz::before { top: 0; left:  0; border-top: 1px solid var(--sz-cyan); border-left:  1px solid var(--sz-cyan); }
+  .corner-sz::after  { top: 0; right: 0; border-top: 1px solid var(--sz-cyan); border-right: 1px solid var(--sz-cyan); }
+  .corner-sl::before, .corner-sl::after { content: ""; position: absolute; width: 12px; height: 12px; }
+  .corner-sl::before { top: 0; left:  0; border-top: 1px solid var(--sl-blue); border-left:  1px solid var(--sl-blue); }
+  .corner-sl::after  { top: 0; right: 0; border-top: 1px solid var(--sl-blue); border-right: 1px solid var(--sl-blue); }
+}
+
+@keyframes blip { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+.blip { animation: blip 1.8s ease-in-out infinite; }
+
+@keyframes ticker-shift { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.ticker-track { animation: ticker-shift 80s linear infinite; }
+
+@keyframes glow-pulse {
+  0%,100% { opacity: 0.5; transform: scale(0.97); }
+  50% { opacity: 0.95; transform: scale(1.04); }
+}
+.glow-pulse { animation: glow-pulse 4s ease-in-out infinite; }
