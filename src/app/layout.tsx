@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     languages: { en: "/", "zh-CN": "/", "x-default": "/" },
   },
   openGraph: {
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Shenzhen vs Seoul · 深圳 vs 首尔" }],
     title: "Shenzhen vs Seoul — Two Operating Systems of Asian Tech Civilization",
     description:
       "Two cities, two civilizational architectures. Speed vs precision. Motherboard vs display. A 10-chapter atlas.",
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
     alternateLocale: ["zh_CN"],
   },
   twitter: {
+    images: ["/twitter-image.png"],
     card: "summary_large_image",
     title: "Shenzhen vs Seoul · 深圳 vs 首尔",
     description:
